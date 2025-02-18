@@ -4,6 +4,7 @@ namespace Mission6_Erickson.Models
 {
     public class Form
     {
+        //Here is a change
         [Key]
         public int MovieID { get; set; }
         public string Category { get; set; }
