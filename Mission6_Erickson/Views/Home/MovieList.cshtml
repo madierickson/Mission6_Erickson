@@ -4,6 +4,8 @@
 @{
 }
 
+@model Form
+
 <table>
 
     <thead>
@@ -19,7 +21,15 @@
     </thead>
 
     <tbody>
-
+        <td>@Model.MovieID</td>
+        <td>@Model.Category</td>
+        <td>@Model.Title</td>
+        <td>@Model.Year</td>
+        <td>@Model.Director</td>
+        <td>@Model.Rating</td>
+        <td>@Model.Edited</td>
+        <td>@Model.LentTo</td>
+        <td>@Model.Notes</td>
     </tbody>
 
 </table>
