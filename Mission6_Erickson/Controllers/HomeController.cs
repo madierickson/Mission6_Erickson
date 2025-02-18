@@ -34,11 +34,21 @@ namespace Mission6_Erickson.Controllers
         public IActionResult MovieForm(Form response)
         {
             // Save the response to the database 
-            _context.Add(response);
+            _context.Forms.Add(response);
 
             _context.SaveChanges();
 
             return View("Confirmation", response);
+        }
+
+        public IActionResult MovieList()
+        {
+            //linq
+            var forms = _context.Forms
+                .Where(x => x.Edited == false)
+                .OrderBy(x => x.MovieID).ToList();
+
+            return View(forms);
         }
     }
 }
