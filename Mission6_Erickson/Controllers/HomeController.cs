@@ -27,6 +27,9 @@ namespace Mission6_Erickson.Controllers
         [HttpGet]
         public IActionResult MovieForm()
         {
+            ViewBag.Categories = _context.Categories
+                .OrderBy(x => x.CategoryName)
+                .ToList();
             return View("MovieForm");
         }
 
