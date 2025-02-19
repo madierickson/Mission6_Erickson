@@ -5,12 +5,12 @@ namespace Mission6_Erickson.Models
 {
     public class Form
     {
-        //Here is a change
+        
         [Key]
         public int MovieID { get; set; }
 
         [ForeignKey("CategoryID")]
-        public string CategoryID { get; set; }
+        public int CategoryID { get; set; }
         public Category Category { get; set; }
         public string Title { get; set; }
         public int Year { get; set; }
