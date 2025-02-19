@@ -53,5 +53,16 @@ namespace Mission6_Erickson.Controllers
 
             return View(forms);
         }
+
+        public IActionResult Edit()
+        {
+            var RecordToEdit = _context.Forms
+                .Where(x => x.MovieID == )
+            ViewBag.Categories = _context.Categories
+              .OrderBy(x => x.CategoryName)
+              .ToList();
+
+            return View("MovieForm");
+        }
     }
 }
