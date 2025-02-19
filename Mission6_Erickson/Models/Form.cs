@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mission6_Erickson.Models
 {
@@ -7,7 +8,10 @@ namespace Mission6_Erickson.Models
         //Here is a change
         [Key]
         public int MovieID { get; set; }
-        public string Category { get; set; }
+
+        [ForeignKey("CategoryID")]
+        public string CategoryID { get; set; }
+        public Category Category { get; set; }
         public string Title { get; set; }
         public int Year { get; set; }
         public string Director { get; set; }
