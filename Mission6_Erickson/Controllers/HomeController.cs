@@ -57,13 +57,13 @@ namespace Mission6_Erickson.Controllers
         public IActionResult Edit(int id)
         {
             var RecordToEdit = _context.Forms
-                .Where(x => x.MovieID == id);
+                .Single(x => x.MovieID == id);
 
             ViewBag.Categories = _context.Categories
               .OrderBy(x => x.CategoryName)
               .ToList();
 
-            return View("MovieForm");
+            return View("MovieForm", RecordToEdit);
         }
     }
 }
