@@ -6,32 +6,38 @@
 
 @model List<Form>
 
-<table>
+<table class="table table-bordered">
 
-    <thead>
-        <td>MovieID</td>
-        <td>Category</td>
-        <td>Title</td>
-        <td>Year</td>
-        <td>Director</td>
-        <td>Rating</td>
-        <td>Edited</td>
-        <td>Lent To</td>
-        <td>Notes</td>
+    <thead class="fw-bold">
+        <tr>
+			<td>MovieID</td>
+			<td>Category</td>
+			<td>Title</td>
+			<td>Year</td>
+			<td>Director</td>
+			<td>Rating</td>
+			<td>Edited</td>
+			<td>Lent To</td>
+			<td>Notes</td>
+        </tr>
+        
     </thead>
 
     @foreach (var x in Model)
     {
         <tbody>
-		    <td>@x.MovieID</td>
-		    <td>@x.Category</td>
-		    <td>@x.Title</td>
-		    <td>@x.Year</td>
-		    <td>@x.Director</td>
-		    <td>@x.Rating</td>
-		    <td>@x.Edited</td>
-		    <td>@x.LentTo</td>
-		    <td>@x.Notes</td>
+			<tr>
+				<td>@x.MovieID</td>
+				<td>@x.Category</td>
+				<td>@x.Title</td>
+				<td>@x.Year</td>
+				<td>@x.Director</td>
+				<td>@x.Rating</td>
+				<td>@x.Edited</td>
+				<td>@x.LentTo</td>
+				<td>@x.Notes</td>
+			</tr>
+		    
 		</tbody>
     }
     
