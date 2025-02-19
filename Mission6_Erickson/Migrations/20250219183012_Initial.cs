@@ -31,8 +31,7 @@ namespace Mission6_Erickson.Migrations
                 {
                     MovieID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CategoryID = table.Column<string>(type: "TEXT", nullable: false),
-                    CategoryID1 = table.Column<int>(type: "INTEGER", nullable: false),
+                    CategoryID = table.Column<int>(type: "INTEGER", nullable: false),
                     Title = table.Column<string>(type: "TEXT", nullable: false),
                     Year = table.Column<int>(type: "INTEGER", nullable: false),
                     Director = table.Column<string>(type: "TEXT", nullable: false),
@@ -45,8 +44,8 @@ namespace Mission6_Erickson.Migrations
                 {
                     table.PrimaryKey("PK_Forms", x => x.MovieID);
                     table.ForeignKey(
-                        name: "FK_Forms_Categories_CategoryID1",
-                        column: x => x.CategoryID1,
+                        name: "FK_Forms_Categories_CategoryID",
+                        column: x => x.CategoryID,
                         principalTable: "Categories",
                         principalColumn: "CategoryID",
                         onDelete: ReferentialAction.Cascade);
@@ -68,9 +67,9 @@ namespace Mission6_Erickson.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Forms_CategoryID1",
+                name: "IX_Forms_CategoryID",
                 table: "Forms",
-                column: "CategoryID1");
+                column: "CategoryID");
         }
 
         /// <inheritdoc />

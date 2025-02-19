@@ -80,11 +80,7 @@ namespace Mission6_Erickson.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("CategoryID")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("CategoryID1")
+                    b.Property<int>("CategoryID")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Director")
@@ -113,7 +109,7 @@ namespace Mission6_Erickson.Migrations
 
                     b.HasKey("MovieID");
 
-                    b.HasIndex("CategoryID1");
+                    b.HasIndex("CategoryID");
 
                     b.ToTable("Forms");
                 });
@@ -122,7 +118,7 @@ namespace Mission6_Erickson.Migrations
                 {
                     b.HasOne("Mission6_Erickson.Models.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("CategoryID1")
+                        .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

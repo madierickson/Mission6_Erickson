@@ -11,7 +11,7 @@ using Mission6_Erickson.Models;
 namespace Mission6_Erickson.Migrations
 {
     [DbContext(typeof(MovieFormContext))]
-    [Migration("20250219182047_Initial")]
+    [Migration("20250219183012_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -83,11 +83,7 @@ namespace Mission6_Erickson.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("CategoryID")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("CategoryID1")
+                    b.Property<int>("CategoryID")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Director")
@@ -116,7 +112,7 @@ namespace Mission6_Erickson.Migrations
 
                     b.HasKey("MovieID");
 
-                    b.HasIndex("CategoryID1");
+                    b.HasIndex("CategoryID");
 
                     b.ToTable("Forms");
                 });
@@ -125,7 +121,7 @@ namespace Mission6_Erickson.Migrations
                 {
                     b.HasOne("Mission6_Erickson.Models.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("CategoryID1")
+                        .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
