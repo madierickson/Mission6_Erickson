@@ -74,5 +74,24 @@ namespace Mission6_Erickson.Controllers
             _context.SaveChanges();
             return RedirectToAction("MovieList");
         }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var RecordToDelete = _context.Forms
+                .Single(x => x.MovieID == id);
+
+            return View(RecordToDelete);
+
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Form form)
+        {
+            _context.Forms.Remove(form);
+            _context.SaveChanges();
+
+            return RedirectToAction("MovieList");
+        }
     }
 }
