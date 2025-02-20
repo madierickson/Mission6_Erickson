@@ -54,6 +54,7 @@ namespace Mission6_Erickson.Controllers
             return View(forms);
         }
 
+        [HttpGet]
         public IActionResult Edit(int id)
         {
             var RecordToEdit = _context.Forms
@@ -64,6 +65,14 @@ namespace Mission6_Erickson.Controllers
               .ToList();
 
             return View("MovieForm", RecordToEdit);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Form updatedInfo)
+        {
+            _context.Update(updatedInfo);
+            _context.SaveChanges();
+            return RedirectToAction("MovieList");
         }
     }
 }
