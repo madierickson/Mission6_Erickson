@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Net.NetworkInformation;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Mission6_Erickson.Models;
 
 namespace Mission6_Erickson.Controllers
@@ -39,7 +40,7 @@ namespace Mission6_Erickson.Controllers
             if (ModelState.IsValid)
             {
                // Save the response to the database 
-                _context.Forms.Add(response);
+                _context.Movies.Add(response);
 
                 _context.SaveChanges();
 
@@ -58,9 +59,10 @@ namespace Mission6_Erickson.Controllers
         public IActionResult MovieList()
         {
             //linq
-            var forms = _context.Forms
+            var forms = _context.Movies
+                .Include(x => x.Category)
                 .Where(x => x.Edited == false)
-                .OrderBy(x => x.MovieID).ToList();
+                .OrderBy(x => x.MovieId).ToList();
 
             return View(forms);
         }
@@ -68,8 +70,8 @@ namespace Mission6_Erickson.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var RecordToEdit = _context.Forms
-                .Single(x => x.MovieID == id);
+            var RecordToEdit = _context.Movies
+                .Single(x => x.MovieId == id);
 
             ViewBag.Categories = _context.Categories
               .OrderBy(x => x.CategoryName)
@@ -89,8 +91,8 @@ namespace Mission6_Erickson.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var RecordToDelete = _context.Forms
-                .Single(x => x.MovieID == id);
+            var RecordToDelete = _context.Movies
+                .Single(x => x.MovieId == id);
 
             return View(RecordToDelete);
 
@@ -99,7 +101,7 @@ namespace Mission6_Erickson.Controllers
         [HttpPost]
         public IActionResult Delete(Movie form)
         {
-            _context.Forms.Remove(form);
+            _context.Movies.Remove(form);
             _context.SaveChanges();
 
             return RedirectToAction("MovieList");
