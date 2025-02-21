@@ -30,11 +30,11 @@ namespace Mission6_Erickson.Controllers
             ViewBag.Categories = _context.Categories
                 .OrderBy(x => x.CategoryName)
                 .ToList();
-            return View("MovieForm", new Form());
+            return View("MovieForm", new Movie());
         }
 
         [HttpPost]
-        public IActionResult MovieForm(Form response)
+        public IActionResult MovieForm(Movie response)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace Mission6_Erickson.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(Form updatedInfo)
+        public IActionResult Edit(Movie updatedInfo)
         {
             _context.Update(updatedInfo);
             _context.SaveChanges();
@@ -97,7 +97,7 @@ namespace Mission6_Erickson.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete(Form form)
+        public IActionResult Delete(Movie form)
         {
             _context.Forms.Remove(form);
             _context.SaveChanges();

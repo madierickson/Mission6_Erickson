@@ -8,7 +8,7 @@ namespace Mission6_Erickson.Models
         {
         }
 
-        public DbSet<Form> Forms { get; set; }
+        public DbSet<Movie> Forms { get; set; }
         public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
